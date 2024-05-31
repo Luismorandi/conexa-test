@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  conexa_test_pg:
+    image: postgres:15.3
+    container_name: conexa_test_pg
+    restart: always
+    environment:
+      POSTGRES_DB: conexa
+      POSTGRES_USER: deploy
+      POSTGRES_PASSWORD: deploy12345
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
