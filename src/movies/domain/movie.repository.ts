@@ -1,9 +1,7 @@
-import { MovieEntity } from "./movie.entity";
+import { MovieEntity } from './movie.entity';
 
 export interface MovieRepository {
-  createMovie(input: ): Promise<MovieEntity>;
-  updateById(id: string): Promise<MovieEntity>;
-  findById(id: string): Promise<MovieEntity>;
-  deleteById(id: string): Promise<MovieEntity>;
-  findAll(): Promise<MovieEntity[]>;
+  findAllByZaga(movie: string): Promise<MovieEntity[]>;
+  findLastCreateByZaga(movie: string, origin: string): Promise<MovieEntity>;
+  createMovies(movies: MovieEntity[], zaga: string): Promise<MovieEntity[]>;
 }

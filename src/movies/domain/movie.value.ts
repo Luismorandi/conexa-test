@@ -1,13 +1,13 @@
-import { MovieEntity } from './movie.entity';
+import { MovieEntity, MovieEntityDT0 } from './movie.entity';
 
 export class MovieValue implements MovieEntity {
-  id: string;
+  id?: string;
   title: string;
   episode: number;
   director: string;
   openingCrawl: string;
   producer: string;
-  releaseDate: Date;
+  releaseDate: string;
   otherDetails: any;
   origin: string;
   createdAt: Date;
@@ -25,5 +25,9 @@ export class MovieValue implements MovieEntity {
     (this.origin = movie.origin),
       (this.createdAt = movie.createdAt),
       (this.updatedAt = movie.updatedAt);
+  }
+
+  update() {
+    this.updatedAt = new Date();
   }
 }

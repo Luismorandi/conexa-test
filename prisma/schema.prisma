@@ -31,3 +31,18 @@ enum Roles {
   BASIC
   ADMIN
 }
+
+model Movies {
+  id            String  @id
+ title          String
+  episode       Int
+  director      String
+  opening_crawl String
+  producer      String
+  release_date   String
+  origin        String
+  other_details Json
+  zaga          String
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+}
