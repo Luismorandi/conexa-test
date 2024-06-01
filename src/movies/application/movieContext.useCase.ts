@@ -49,16 +49,24 @@ class DefaultStrategy implements MovieStrategy {
 @Injectable()
 export class MovieContext {
   private movieStrategy: MovieStrategy;
-  @Inject(SharedTypes.SWAPI_REPO)
-  private readonly starWarsRepo: StarWarsRepository;
-  @Inject(SharedTypes.MOVIE_REPO) private readonly movieRepo: MovieRepository;
+
+  constructor(
+    @Inject(SharedTypes.SWAPI_REPO)
+    private readonly starWarsRepo: StarWarsRepository,
+    @Inject(SharedTypes.MOVIE_REPO) private readonly movieRepo: MovieRepository,
+  ) {}
 
   setMovieStrategy(context: string) {
     this.movieStrategy = this.factoryRepo(context);
   }
 
-  updateMovieRepo() {
-    this.movieStrategy.update();
+  async updateMovieRepo() {
+    if (!this.movieStrategy) {
+      throw new Error(
+        'Movie strategy is not set. Call setMovieStrategy() first.',
+      );
+    }
+    await this.movieStrategy.update();
   }
 
   private factoryRepo(context: string): MovieStrategy {

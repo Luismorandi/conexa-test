@@ -8,13 +8,15 @@ export class MovieUseCase {
   constructor(
     @Inject(SharedTypes.MOVIE_REPO)
     private readonly movieRepository: MovieRepository,
+    private readonly movieContext: MovieContext,
   ) {}
 
   public async findAllByZaga(movie: string): Promise<MovieEntity[]> {
-    // const context = new MovieContext();
-    // context.setMovieStrategy(movie);
-    // context.updateMovieRepo();
-    const movies = await this.movieRepository.findAllByZaga(movie);
+    this.movieContext.setMovieStrategy(movie);
+    await this.movieContext.updateMovieRepo();
+    const movies = await this.movieRepository.findAllByZaga(
+      movie.toLowerCase(),
+    );
     return movies;
   }
 }
