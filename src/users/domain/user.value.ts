@@ -1,8 +1,5 @@
 import { ROLES } from 'src/config/constants';
 import { UserEntity, UserEntityDT0 } from './user.entity';
-import { v4 as uuid } from 'uuid';
-import * as bcrypt from 'bcrypt';
-import { configuration } from 'src/config/configuration';
 
 export class UserValue implements UserEntity {
   id: string;

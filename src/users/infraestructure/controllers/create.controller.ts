@@ -14,12 +14,19 @@ import { AuthGuard } from 'src/auth/application/guards/auth.guard';
 import { PublicAccess } from 'src/auth/application/decorators/public.decorator';
 import { Roles } from 'src/auth/application/decorators/roles.decortor';
 import { RolesGuard } from 'src/auth/application/guards/roles.guard';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('user')
 @UseGuards(AuthGuard, RolesGuard)
 export class UserController {
   constructor(private readonly userService: UserUseCase) {}
 
+  @ApiOperation({ summary: 'Create user' })
+  @ApiResponse({
+    status: 201,
+    description: 'The user has been successfully created.',
+  })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
   @PublicAccess()
   @Post('create')
   async create(@Body() body: UserDTO) {
@@ -33,6 +40,8 @@ export class UserController {
     }
   }
 
+  @ApiResponse({ status: 200, description: 'Returns all users.' })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
   @Roles('ADMIN')
   @Get('all')
   async getAll() {
