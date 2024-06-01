@@ -1,8 +1,13 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Users } from '@prisma/client';
+import { randomUUID } from 'crypto';
 import { ROLES, SharedTypes } from 'src/config/constants';
 import { PrismaService } from 'src/config/db/prisma/services/prisma.service';
-import { UserEntity, UserEntityDT0 } from 'src/users/domain/user.entity';
+import {
+  UserEntity,
+  UserEntityDT0,
+  ValidateUserDTO,
+} from 'src/users/domain/user.entity';
 import { UserRepository } from 'src/users/domain/user.repository';
 import { UserValue } from 'src/users/domain/user.value';
 
@@ -16,7 +21,7 @@ export class UserPostgresRepository implements UserRepository {
       const newUser = new UserValue(input);
       const saveUser = await this.prisma.users.create({
         data: {
-          id: newUser.id,
+          id: randomUUID(),
           first_name: newUser.firstName,
           last_name: newUser.lastName,
           age: newUser.age,
@@ -58,6 +63,29 @@ export class UserPostgresRepository implements UserRepository {
       });
 
       return user ? this.convertPrismaUser(user) : null;
+    } catch (err) {
+      throw err;
+    }
+  }
+  async validateUser(input: ValidateUserDTO): Promise<UserEntity> {
+    try {
+      const user = await this.prisma.users.findFirst({
+        where: {
+          OR: [{ email: input.email }, { username: input.username }],
+        },
+      });
+
+      return user ? this.convertPrismaUser(user) : null;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findAll(): Promise<UserEntity[]> {
+    try {
+      const users = await this.prisma.users.findMany();
+
+      return users ? users.map((u) => this.convertPrismaUser(u)) : null;
     } catch (err) {
       throw err;
     }

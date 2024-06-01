@@ -5,6 +5,7 @@ import { UserUseCase } from 'src/users/application/user.useCases';
 import { UserEntity } from 'src/users/domain/user.entity';
 import { AuthResponse, PayloadToken } from '../domain/auth.entity';
 import { UserDTO } from './dto/auth.dto';
+import { configuration } from 'src/config/configuration';
 
 @Injectable()
 export class AuthUseCase {
@@ -14,7 +15,10 @@ export class AuthUseCase {
     const userByEmail = await this.userUseCase.findByEmail(email);
 
     if (userByEmail) {
-      const match = await bcrypt.compare(password, userByEmail.password);
+      const match = bcrypt.compareSync(
+        password.toString(),
+        userByEmail.password.toString(),
+      );
       if (match) return userByEmail;
     }
 
@@ -44,7 +48,7 @@ export class AuthUseCase {
     return {
       accessToken: this.signJWT({
         payload,
-        secret: process.env.JWT_SECRET,
+        secret: configuration.jwtSecret,
         expires: '1h',
       }),
       user,

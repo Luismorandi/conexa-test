@@ -22,3 +22,8 @@ export interface UserEntityDT0 {
   password: string;
   role: ROLES;
 }
+
+export interface ValidateUserDTO {
+  email: string;
+  username: string;
+}

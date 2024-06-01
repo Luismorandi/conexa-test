@@ -15,13 +15,13 @@ export class UserValue implements UserEntity {
   role: ROLES;
 
   constructor(user: UserEntityDT0) {
-    (this.id = uuid()),
+    (this.id = user.id),
       (this.firstName = user.firstName),
       (this.lastName = user.lastName),
       (this.age = user.age),
       (this.email = user.email),
       (this.username = user.username),
-      (this.password = bcrypt.hashSync(user.password, +configuration.hash)),
+      (this.password = user.password),
       (this.role = user.role);
   }
 }

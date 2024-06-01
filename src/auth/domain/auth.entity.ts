@@ -7,7 +7,7 @@ export interface PayloadToken {
 }
 
 export interface AuthBody {
-  username: string;
+  email: string;
   password: string;
 }
 
