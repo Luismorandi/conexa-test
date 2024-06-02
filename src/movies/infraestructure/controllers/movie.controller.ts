@@ -13,7 +13,7 @@ import {
 
 import { AuthGuard } from '../../../auth/application/guards/auth.guard';
 import { PublicAccess } from '../../../auth/application/decorators/public.decorator';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { MovieUseCase } from '../../../movies/application/movie.useCase';
 import { Roles } from '../../../auth/application/decorators/roles.decortor';
 import { RolesGuard } from '../../../auth/application/guards/roles.guard';
@@ -22,6 +22,7 @@ import {
   UpdateMovieDTO,
 } from '../../../movies/application/dto/movies.dto';
 import { ROLES } from '../../../config/constants';
+import { movies, updateMovie } from '../../../config/swagger/examples';
 
 @Controller('movies')
 @UseGuards(AuthGuard, RolesGuard)
@@ -35,8 +36,9 @@ export class MovieController {
   })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @PublicAccess()
-  @Get('zaga/:movie')
-  async findAllByZaga(@Param('movie') movie: string) {
+  @ApiParam({ name: 'zaga', description: 'name of zaga', example: 'star_wars' })
+  @Get('zaga/:zaga')
+  async findAllByZaga(@Param('zaga') movie: string) {
     try {
       return await this.movieService.findAllByZaga(movie);
     } catch (err) {
@@ -73,6 +75,7 @@ export class MovieController {
   })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @Roles(ROLES.BASIC)
+  @ApiParam({ name: 'id', description: 'Id of the movie' })
   @Get('/:id')
   async findById(@Param('id') id: string) {
     try {
@@ -92,6 +95,10 @@ export class MovieController {
   })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @Roles(ROLES.ADMIN)
+  @ApiBody({
+    type: CreateMovieDTO,
+    examples: movies,
+  })
   @Post('create')
   async create(@Body() body: CreateMovieDTO) {
     try {
@@ -111,6 +118,7 @@ export class MovieController {
   })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @Roles(ROLES.ADMIN)
+  @ApiBody({ type: UpdateMovieDTO, examples: updateMovie })
   @Put('update')
   async update(@Body() body: UpdateMovieDTO) {
     try {
@@ -130,6 +138,7 @@ export class MovieController {
   })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @Roles(ROLES.ADMIN)
+  @ApiParam({ name: 'id', description: 'delete movie by id' })
   @Delete('delete/:id')
   async delete(@Param('id') id: string) {
     try {

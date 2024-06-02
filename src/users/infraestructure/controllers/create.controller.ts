@@ -14,7 +14,8 @@ import { AuthGuard } from '../../../auth/application/guards/auth.guard';
 import { PublicAccess } from '../../../auth/application/decorators/public.decorator';
 import { Roles } from '../../../auth/application/decorators/roles.decortor';
 import { RolesGuard } from '../../../auth/application/guards/roles.guard';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { createUser } from '../../../config/swagger/examples';
 
 @Controller('user')
 @UseGuards(AuthGuard, RolesGuard)
@@ -28,6 +29,7 @@ export class UserController {
   })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @PublicAccess()
+  @ApiBody({ type: UserDTO, examples: createUser })
   @Post('create')
   async create(@Body() body: UserDTO) {
     try {
