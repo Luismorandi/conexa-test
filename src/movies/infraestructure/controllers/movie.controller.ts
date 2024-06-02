@@ -11,17 +11,17 @@ import {
   UseGuards,
 } from '@nestjs/common';
 
-import { AuthGuard } from 'src/auth/application/guards/auth.guard';
-import { PublicAccess } from 'src/auth/application/decorators/public.decorator';
+import { AuthGuard } from '../../../auth/application/guards/auth.guard';
+import { PublicAccess } from '../../../auth/application/decorators/public.decorator';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { MovieUseCase } from 'src/movies/application/movie.useCase';
-import { Roles } from 'src/auth/application/decorators/roles.decortor';
-import { RolesGuard } from 'src/auth/application/guards/roles.guard';
+import { MovieUseCase } from '../../../movies/application/movie.useCase';
+import { Roles } from '../../../auth/application/decorators/roles.decortor';
+import { RolesGuard } from '../../../auth/application/guards/roles.guard';
 import {
   CreateMovieDTO,
   UpdateMovieDTO,
-} from 'src/movies/application/dto/movies.dto';
-import { ROLES } from 'src/config/constants';
+} from '../../../movies/application/dto/movies.dto';
+import { ROLES } from '../../../config/constants';
 
 @Controller('movies')
 @UseGuards(AuthGuard, RolesGuard)

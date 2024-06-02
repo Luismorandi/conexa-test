@@ -1,4 +1,4 @@
-import { SharedTypes } from 'src/config/constants';
+import { SharedTypes } from '../../../config/constants';
 import { PrismaService } from './services/prisma.service';
 
 export const PrismaClientProvider = {

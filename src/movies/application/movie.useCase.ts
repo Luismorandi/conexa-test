@@ -2,7 +2,7 @@ import { MovieRepository } from '../domain/movie.repository';
 import { MovieEntity } from '../domain/movie.entity';
 import { MovieContext } from './movieContext.useCase';
 import { Inject } from '@nestjs/common';
-import { SharedTypes } from 'src/config/constants';
+import { SharedTypes } from '../../config/constants';
 import { CreateMovieDTO, UpdateMovieDTO } from './dto/movies.dto';
 
 export class MovieUseCase {

@@ -8,12 +8,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 
-import { UserUseCase } from 'src/users/application/user.useCases';
-import { UserDTO } from 'src/auth/application/dto/auth.dto';
-import { AuthGuard } from 'src/auth/application/guards/auth.guard';
-import { PublicAccess } from 'src/auth/application/decorators/public.decorator';
-import { Roles } from 'src/auth/application/decorators/roles.decortor';
-import { RolesGuard } from 'src/auth/application/guards/roles.guard';
+import { UserUseCase } from '../../../users/application/user.useCases';
+import { UserDTO } from '../../../auth/application/dto/auth.dto';
+import { AuthGuard } from '../../../auth/application/guards/auth.guard';
+import { PublicAccess } from '../../../auth/application/decorators/public.decorator';
+import { Roles } from '../../../auth/application/decorators/roles.decortor';
+import { RolesGuard } from '../../../auth/application/guards/roles.guard';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('user')

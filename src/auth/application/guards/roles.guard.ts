@@ -7,7 +7,12 @@ import {
 import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
 import { Observable } from 'rxjs';
-import { ADMIN_KEY, PUBLIC_KEY, ROLES, ROLES_KEY } from 'src/config/constants';
+import {
+  ADMIN_KEY,
+  PUBLIC_KEY,
+  ROLES,
+  ROLES_KEY,
+} from '../../../config/constants';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -40,16 +45,14 @@ export class RolesGuard implements CanActivate {
       } else if (admin && roleUser === admin) {
         return true;
       } else {
-        throw new UnauthorizedException(
-          'No tienes permisos para esta operacion',
-        );
+        return false;
       }
     }
 
     const isAuth = roles.some((role) => role === roleUser);
 
     if (!isAuth) {
-      throw new UnauthorizedException('No tienes permisos para esta operacion');
+      return false;
     }
     return true;
   }

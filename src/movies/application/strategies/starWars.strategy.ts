@@ -1,9 +1,9 @@
 import { Inject } from '@nestjs/common';
 import { MovieStrategy } from '../movieContext.useCase';
-import { ORGIGIN_SWAPI, SharedTypes } from 'src/config/constants';
-import { MovieEntity } from 'src/movies/domain/movie.entity';
-import { MovieRepository } from 'src/movies/domain/movie.repository';
-import { StarWarsRepository } from 'src/movies/infraestructure/repository/gateway/swapi.repository';
+import { ORGIGIN_SWAPI, SharedTypes } from '../../../config/constants';
+import { MovieEntity } from '../../../movies/domain/movie.entity';
+import { MovieRepository } from '../../../movies/domain/movie.repository';
+import { StarWarsRepository } from '../../../movies/infraestructure/repository/gateway/swapi.repository';
 
 export class StarWarsStrategy implements MovieStrategy {
   constructor(

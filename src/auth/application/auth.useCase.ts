@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import { UserUseCase } from 'src/users/application/user.useCases';
-import { UserEntity } from 'src/users/domain/user.entity';
 import { AuthResponse, PayloadToken } from '../domain/auth.entity';
 import { UserDTO } from './dto/auth.dto';
 import { configuration } from 'src/config/configuration';

@@ -5,7 +5,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { ROLES } from 'src/config/constants';
+import { ROLES } from '../../../config/constants';
 
 export class UserDTO {
   @IsOptional()

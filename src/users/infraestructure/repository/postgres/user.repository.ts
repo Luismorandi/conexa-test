@@ -1,15 +1,15 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Users } from '@prisma/client';
 import { randomUUID } from 'crypto';
-import { ROLES, SharedTypes } from 'src/config/constants';
-import { PrismaService } from 'src/config/db/prisma/services/prisma.service';
+import { ROLES, SharedTypes } from '../../../../config/constants';
+import { PrismaService } from '../../../../config/db/prisma/services/prisma.service';
 import {
   UserEntity,
   UserEntityDT0,
   ValidateUserDTO,
-} from 'src/users/domain/user.entity';
-import { UserRepository } from 'src/users/domain/user.repository';
-import { UserValue } from 'src/users/domain/user.value';
+} from '../../../../users/domain/user.entity';
+import { UserRepository } from '../../../../users/domain/user.repository';
+import { UserValue } from '../../../../users/domain/user.value';
 
 @Injectable()
 export class UserPostgresRepository implements UserRepository {

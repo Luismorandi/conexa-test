@@ -1,10 +1,10 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Movies } from '@prisma/client';
-import { SharedTypes } from 'src/config/constants';
-import { PrismaService } from 'src/config/db/prisma/services/prisma.service';
-import { MovieEntity } from 'src/movies/domain/movie.entity';
-import { MovieRepository } from 'src/movies/domain/movie.repository';
-import { MovieValue } from 'src/movies/domain/movie.value';
+import { SharedTypes } from '../../../config/constants';
+import { PrismaService } from '../../../config/db/prisma/services/prisma.service';
+import { MovieEntity } from '../../../movies/domain/movie.entity';
+import { MovieRepository } from '../../../movies/domain/movie.repository';
+import { MovieValue } from '../../../movies/domain/movie.value';
 
 @Injectable()
 export class MoviePostgresRepository implements MovieRepository {

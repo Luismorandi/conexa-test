@@ -1,7 +1,6 @@
-import { ORGIGIN_SWAPI, SharedTypes } from 'src/config/constants';
+import { SharedTypes } from '../../config/constants';
 import { MovieRepository } from '../domain/movie.repository';
 import { StarWarsRepository } from '../infraestructure/repository/gateway/swapi.repository';
-import { MovieEntity } from '../domain/movie.entity';
 import { Inject, Injectable } from '@nestjs/common';
 import { StarWarsStrategy } from './strategies/starWars.strategy';
 

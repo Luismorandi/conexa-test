@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { UserEntity, UserEntityDT0 } from '../domain/user.entity';
 import { UserRepository } from '../domain/user.repository';
-import { SharedTypes } from 'src/config/constants';
+import { SharedTypes } from '../../config/constants';
 import * as bcrypt from 'bcrypt';
 
 export class UserUseCase {

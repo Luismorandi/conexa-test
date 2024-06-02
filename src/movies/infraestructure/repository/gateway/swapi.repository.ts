@@ -1,9 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import axios from 'axios';
-import { MovieEntity } from 'src/movies/domain/movie.entity';
+import { MovieEntity } from '../../../../movies/domain/movie.entity';
 import { ResponseSwapi, SwapiMovie } from './dto';
-import { MovieValue } from 'src/movies/domain/movie.value';
-import { ORGIGIN_SWAPI, STAR_WARS } from 'src/config/constants';
+import { MovieValue } from '../../../../movies/domain/movie.value';
+import { ORGIGIN_SWAPI, STAR_WARS } from '../../../../config/constants';
 
 @Injectable()
 export class StarWarsRepository {
