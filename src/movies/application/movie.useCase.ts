@@ -16,7 +16,7 @@ export class MovieUseCase {
     this.movieContext.setMovieStrategy(movie);
     await this.movieContext.updateMovieRepo();
     const movies = await this.movieRepository.findAllByZaga(
-      movie.toLowerCase(),
+      movie.toUpperCase(),
     );
     return movies;
   }

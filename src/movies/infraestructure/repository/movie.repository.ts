@@ -5,6 +5,7 @@ import { PrismaService } from '../../../config/db/prisma/services/prisma.service
 import { MovieEntity } from '../../../movies/domain/movie.entity';
 import { MovieRepository } from '../../../movies/domain/movie.repository';
 import { MovieValue } from '../../../movies/domain/movie.value';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class MoviePostgresRepository implements MovieRepository {
@@ -75,6 +76,7 @@ export class MoviePostgresRepository implements MovieRepository {
       movies.forEach((m) => {
         m.createdAt = new Date();
         m.updatedAt = new Date();
+        m.id = randomUUID();
       });
       const moviesPrisma = this.convertMovieToPrisma(movies);
       const movie = await this.prisma.movies.createMany({

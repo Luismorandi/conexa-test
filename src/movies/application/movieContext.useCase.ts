@@ -37,8 +37,8 @@ export class MovieContext {
   }
 
   private factoryRepo(context: string): MovieStrategy {
-    switch (context.toLowerCase()) {
-      case 'star_wars':
+    switch (context.toUpperCase()) {
+      case 'STAR_WARS':
         return new StarWarsStrategy(this.starWarsRepo, this.movieRepo);
       default:
         return new DefaultStrategy();

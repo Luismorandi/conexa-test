@@ -1,6 +1,10 @@
 import { Inject } from '@nestjs/common';
 import { MovieStrategy } from '../movieContext.useCase';
-import { ORGIGIN_SWAPI, SharedTypes } from '../../../config/constants';
+import {
+  ORGIGIN_SWAPI,
+  STAR_WARS,
+  SharedTypes,
+} from '../../../config/constants';
 import { MovieEntity } from '../../../movies/domain/movie.entity';
 import { MovieRepository } from '../../../movies/domain/movie.repository';
 import { StarWarsRepository } from '../../../movies/infraestructure/repository/gateway/swapi.repository';
@@ -16,7 +20,6 @@ export class StarWarsStrategy implements MovieStrategy {
   }
   async update() {
     let updateMovies: MovieEntity[];
-    const STAR_WARS = 'star_wars';
     const lastCretedMovie = await this.movieRepo.findLastCreateByZaga(
       STAR_WARS,
       ORGIGIN_SWAPI,
