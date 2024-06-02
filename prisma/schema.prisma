@@ -42,7 +42,7 @@ model Movies {
   release_date   String
   origin        String
   other_details Json
-  zaga          String
+  saga          String
   created_at     DateTime @default(now())
   updated_at     DateTime @updatedAt
 }

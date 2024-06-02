@@ -12,7 +12,7 @@ export class MovieValue implements MovieEntity {
   origin: string;
   createdAt: Date;
   updatedAt: Date;
-  zaga: string;
+  saga: string;
 
   constructor(movie: MovieEntityDT0) {
     (this.id = movie.id),
@@ -26,7 +26,7 @@ export class MovieValue implements MovieEntity {
     (this.origin = movie.origin),
       (this.createdAt = movie.createdAt),
       (this.updatedAt = movie.updatedAt);
-    this.zaga = movie.zaga.toUpperCase();
+    this.saga = movie.saga?.toUpperCase();
   }
 
   update() {

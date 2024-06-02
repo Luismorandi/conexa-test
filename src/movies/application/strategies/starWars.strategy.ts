@@ -20,7 +20,7 @@ export class StarWarsStrategy implements MovieStrategy {
   }
   async update() {
     let updateMovies: MovieEntity[];
-    const lastCretedMovie = await this.movieRepo.findLastCreateByZaga(
+    const lastCretedMovie = await this.movieRepo.findLastCreateBysaga(
       STAR_WARS,
       ORGIGIN_SWAPI,
     );

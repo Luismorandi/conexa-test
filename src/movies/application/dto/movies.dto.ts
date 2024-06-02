@@ -45,7 +45,7 @@ export class MovieDTO {
 
   @IsNotEmpty()
   @IsString()
-  zaga: string;
+  saga: string;
 }
 export class UpdateMovieDTO {
   @IsNotEmpty()
@@ -91,5 +91,5 @@ export class UpdateMovieDTO {
 
   @IsOptional()
   @IsString()
-  zaga: string;
+  saga: string;
 }

@@ -29,21 +29,21 @@ import { movies, updateMovie } from '../../../config/swagger/examples';
 export class MovieController {
   constructor(private readonly movieService: MovieUseCase) {}
 
-  @ApiOperation({ summary: 'Find all movies by zaga' })
+  @ApiOperation({ summary: 'Find all movies by saga' })
   @ApiResponse({
     status: 201,
-    description: 'Get all movies by zaga',
+    description: 'Get all movies by saga',
   })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @PublicAccess()
-  @ApiParam({ name: 'zaga', description: 'name of zaga', example: 'star_wars' })
-  @Get('zaga/:zaga')
-  async findAllByZaga(@Param('zaga') movie: string) {
+  @ApiParam({ name: 'saga', description: 'name of saga', example: 'star_wars' })
+  @Get('saga/:saga')
+  async findAllBysaga(@Param('saga') movie: string) {
     try {
-      return await this.movieService.findAllByZaga(movie);
+      return await this.movieService.findAllBysaga(movie);
     } catch (err) {
       throw new HttpException(
-        `error find all movies by zaga : ${err}`,
+        `error find all movies by saga : ${err}`,
         HttpStatus.BAD_REQUEST,
       );
     }
@@ -105,7 +105,7 @@ export class MovieController {
       return await this.movieService.createManyMovies(body);
     } catch (err) {
       throw new HttpException(
-        `error create movies by zaga : ${err}`,
+        `error create movies by saga : ${err}`,
         HttpStatus.BAD_REQUEST,
       );
     }

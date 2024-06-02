@@ -13,7 +13,7 @@ export const movies = {
           releaseDate: '1992-19-05',
           origin: 'ADMIN',
           otherDetails: {},
-          zaga: 'batman',
+          saga: 'batman',
         },
       ],
     },

@@ -10,7 +10,7 @@ export interface MovieEntity {
   origin: string;
   createdAt: Date;
   updatedAt: Date;
-  zaga: string;
+  saga: string;
 }
 
 export interface MovieEntityDT0 {
@@ -25,5 +25,5 @@ export interface MovieEntityDT0 {
   origin: string;
   createdAt: Date;
   updatedAt: Date;
-  zaga: string;
+  saga: string;
 }

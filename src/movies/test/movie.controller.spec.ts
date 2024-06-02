@@ -17,7 +17,7 @@ describe('MovieController', () => {
         {
           provide: MovieUseCase,
           useValue: {
-            findAllByZaga: jest.fn(),
+            findAllBysaga: jest.fn(),
             findAll: jest.fn(),
             findById: jest.fn(),
             createManyMovies: jest.fn(),
@@ -42,25 +42,25 @@ describe('MovieController', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('findAllByZaga', () => {
+  describe('findAllBysaga', () => {
     it('should return an array of movies', async () => {
       const result = [MOVIE_ENTITY_FAKE];
-      jest.spyOn(service, 'findAllByZaga').mockResolvedValue(result);
+      jest.spyOn(service, 'findAllBysaga').mockResolvedValue(result);
 
-      expect(await controller.findAllByZaga('zaga1')).toBe(result);
+      expect(await controller.findAllBysaga('saga1')).toBe(result);
     });
 
     it('should throw an exception', async () => {
       jest
-        .spyOn(service, 'findAllByZaga')
+        .spyOn(service, 'findAllBysaga')
         .mockRejectedValue(new Error('Error'));
 
       try {
-        await controller.findAllByZaga('zaga1');
+        await controller.findAllBysaga('saga1');
       } catch (err) {
         expect(err).toBeInstanceOf(HttpException);
         expect(err.message).toBe(
-          'error find all movies by zaga : Error: Error',
+          'error find all movies by saga : Error: Error',
         );
         expect(err.status).toBe(HttpStatus.BAD_REQUEST);
       }
@@ -128,7 +128,7 @@ describe('MovieController', () => {
         await controller.create(dto);
       } catch (err) {
         expect(err).toBeInstanceOf(HttpException);
-        expect(err.message).toBe('error create movies by zaga : Error: Error');
+        expect(err.message).toBe('error create movies by saga : Error: Error');
         expect(err.status).toBe(HttpStatus.BAD_REQUEST);
       }
     });

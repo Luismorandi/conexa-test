@@ -1,6 +1,6 @@
 # Descripcion:
 
-Conexa test es una prueba tecnica para el puesto de desarrollador backend en Conexa. La funcion principal de la api es hacer poder hacer un crud sobre peliculas de starwars (u otras zagas de peliculas) y un manejo de roles para gestionar el accesos de algunos endpoints.
+Conexa test es una prueba tecnica para el puesto de desarrollador backend en Conexa. La funcion principal de la api es hacer poder hacer un crud sobre peliculas de starwars (u otras sagas de peliculas) y un manejo de roles para gestionar el accesos de algunos endpoints.
 
 La db se actualiza con la api oficial de starwars. Si se quisiera poder consumir otras apis para otra pelicula, podemos generar una strategia que lo haga.
 

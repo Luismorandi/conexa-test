@@ -12,10 +12,10 @@ export class MovieUseCase {
     private readonly movieContext: MovieContext,
   ) {}
 
-  public async findAllByZaga(movie: string): Promise<MovieEntity[]> {
+  public async findAllBysaga(movie: string): Promise<MovieEntity[]> {
     this.movieContext.setMovieStrategy(movie);
     await this.movieContext.updateMovieRepo();
-    const movies = await this.movieRepository.findAllByZaga(
+    const movies = await this.movieRepository.findAllBysaga(
       movie.toUpperCase(),
     );
     return movies;

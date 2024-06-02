@@ -11,5 +11,5 @@ export const MOVIE_ENTITY_FAKE = {
   origin: 'SWAPI_API',
   createdAt: new Date('2024-06-02T17:39:13.086Z'),
   updatedAt: new Date('2024-06-02T17:39:13.086Z'),
-  zaga: 'zaga1',
+  saga: 'saga1',
 };

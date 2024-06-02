@@ -54,7 +54,7 @@ export class StarWarsRepository {
       origin: ORGIGIN_SWAPI,
       createdAt: apiMovie.created,
       updatedAt: apiMovie.edited,
-      zaga: STAR_WARS,
+      saga: STAR_WARS,
     });
   }
 }

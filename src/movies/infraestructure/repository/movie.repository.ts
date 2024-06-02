@@ -34,11 +34,11 @@ export class MoviePostgresRepository implements MovieRepository {
     }
   }
 
-  async findAllByZaga(zaga: string): Promise<MovieEntity[]> {
+  async findAllBysaga(saga: string): Promise<MovieEntity[]> {
     try {
       const movies = await this.prisma.movies.findMany({
         where: {
-          zaga: zaga,
+          saga: saga,
         },
       });
 
@@ -50,14 +50,14 @@ export class MoviePostgresRepository implements MovieRepository {
     }
   }
 
-  async findLastCreateByZaga(
-    zaga: string,
+  async findLastCreateBysaga(
+    saga: string,
     origin: string,
   ): Promise<MovieEntity | null> {
     try {
       const movie = await this.prisma.movies.findFirst({
         where: {
-          zaga: zaga,
+          saga: saga,
           origin: origin,
         },
         orderBy: {
@@ -131,7 +131,7 @@ export class MoviePostgresRepository implements MovieRepository {
       origin: prismaMovie.origin,
       createdAt: prismaMovie.created_at,
       updatedAt: prismaMovie.updated_at,
-      zaga: prismaMovie.zaga,
+      saga: prismaMovie.saga,
     });
   }
 
@@ -147,7 +147,7 @@ export class MoviePostgresRepository implements MovieRepository {
         release_date: m.releaseDate,
         origin: m.origin,
         other_details: m.otherDetails,
-        zaga: m.zaga.toUpperCase(),
+        saga: m.saga?.toUpperCase(),
         created_at: m.createdAt,
         updated_at: m.updatedAt,
       };
