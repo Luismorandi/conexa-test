@@ -23,7 +23,6 @@ export class RolesGuard implements CanActivate {
     if (isPublic) {
       return true;
     }
-
     const roles = this.reflector.get<Array<keyof typeof ROLES>>(
       ROLES_KEY,
       context.getHandler(),
@@ -45,10 +44,6 @@ export class RolesGuard implements CanActivate {
           'No tienes permisos para esta operacion',
         );
       }
-    }
-
-    if (roleUser === ROLES.ADMIN) {
-      return true;
     }
 
     const isAuth = roles.some((role) => role === roleUser);

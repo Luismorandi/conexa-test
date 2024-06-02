@@ -3,6 +3,7 @@ import { MovieEntity } from '../domain/movie.entity';
 import { MovieContext } from './movieContext.useCase';
 import { Inject } from '@nestjs/common';
 import { SharedTypes } from 'src/config/constants';
+import { CreateMovieDTO, UpdateMovieDTO } from './dto/movies.dto';
 
 export class MovieUseCase {
   constructor(
@@ -17,6 +18,31 @@ export class MovieUseCase {
     const movies = await this.movieRepository.findAllByZaga(
       movie.toLowerCase(),
     );
+    return movies;
+  }
+
+  public async findAll(): Promise<MovieEntity[]> {
+    const movies = await this.movieRepository.findAll();
+    return movies;
+  }
+
+  public async findById(id: string): Promise<MovieEntity> {
+    const movie = await this.movieRepository.findById(id);
+    return movie;
+  }
+
+  public async createManyMovies(input: CreateMovieDTO): Promise<MovieEntity[]> {
+    const movies = await this.movieRepository.createMovies(input.movies);
+    return movies;
+  }
+
+  public async updateMovie(input: UpdateMovieDTO): Promise<MovieEntity> {
+    const movies = await this.movieRepository.updateMovie(input, input.id);
+    return movies;
+  }
+
+  public async deleteMovie(id: string): Promise<MovieEntity> {
+    const movies = await this.movieRepository.deleteMovie(id);
     return movies;
   }
 }

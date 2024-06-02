@@ -3,7 +3,7 @@ import axios from 'axios';
 import { MovieEntity } from 'src/movies/domain/movie.entity';
 import { ResponseSwapi, SwapiMovie } from './dto';
 import { MovieValue } from 'src/movies/domain/movie.value';
-import { ORGIGIN_SWAPI } from 'src/config/constants';
+import { ORGIGIN_SWAPI, STAR_WARS } from 'src/config/constants';
 
 @Injectable()
 export class StarWarsRepository {
@@ -47,13 +47,14 @@ export class StarWarsRepository {
       title: apiMovie.title,
       episode: apiMovie.episode_id,
       director: apiMovie.director,
-      openingCrawl: apiMovie.opening_crawl,
+      description: apiMovie.opening_crawl,
       producer: apiMovie.producer,
       releaseDate: apiMovie.release_date,
       otherDetails: other_details,
       origin: ORGIGIN_SWAPI,
       createdAt: apiMovie.created,
       updatedAt: apiMovie.edited,
+      zaga: STAR_WARS,
     });
   }
 }
