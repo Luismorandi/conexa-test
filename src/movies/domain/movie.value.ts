@@ -26,7 +26,7 @@ export class MovieValue implements MovieEntity {
     (this.origin = movie.origin),
       (this.createdAt = movie.createdAt),
       (this.updatedAt = movie.updatedAt);
-    this.zaga = movie.zaga;
+    this.zaga = movie.zaga.toUpperCase();
   }
 
   update() {

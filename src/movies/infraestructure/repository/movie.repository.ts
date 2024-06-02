@@ -147,7 +147,7 @@ export class MoviePostgresRepository implements MovieRepository {
         release_date: m.releaseDate,
         origin: m.origin,
         other_details: m.otherDetails,
-        zaga: m.zaga,
+        zaga: m.zaga.toUpperCase(),
         created_at: m.createdAt,
         updated_at: m.updatedAt,
       };
